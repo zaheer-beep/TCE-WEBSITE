@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #070a0e;
+  --color-panel: #0e1319;
+  --color-panel-2: #141b23;
+  --color-line: #1f2832;
+  --color-brand: #4aa6d9;
+  --color-brand-deep: #1b75bc;
+  --color-sky: #a6dff9;
+  --color-mist: #9aa7b4;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background: var(--color-ink);
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+}
+
+@utility eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.22em] text-brand;
+}
+
+@utility h-display {
+  @apply text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl;
+}
+
+@utility h-section {
+  @apply text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl;
+}
+
+@utility lede {
+  @apply text-lg leading-relaxed text-mist text-pretty;
+}
+
+@utility btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky bg-brand text-ink hover:bg-sky;
+}
+
+@utility btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky border border-white/25 text-white hover:border-sky hover:text-sky;
+}
+
+@utility card {
+  @apply rounded-2xl border border-line bg-panel;
+}
+
+@utility field {
+  @apply w-full rounded-lg border border-line bg-ink px-4 py-3 text-base text-white placeholder:text-mist/60 focus:border-brand focus:outline-none;
+}
