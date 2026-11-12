@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/contact-us", destination: "/contact", permanent: true },
+      { source: "/services/building-systems", destination: "/services/maintenance", permanent: true },
       { source: "/sitemap", destination: "/sitemap.xml", permanent: true },
     ];
   },

@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `TCE Property Management has served New York City property owners for over ${site.yearsInBusiness} years, combining management with inspection, construction and risk mitigation.`,
+  description: `TCE Property Management has served New York City property owners for over ${site.yearsInBusiness} years, combining management with inspection, engineering, construction and risk mitigation.`,
   alternates: { canonical: "/about" },
 };
 
@@ -37,14 +37,14 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About TCE"
         title={`Over ${site.yearsInBusiness} years of looking after New York City buildings.`}
-        lede="TCE started with a simple observation: buildings rarely fail because rent was not collected. They fail because nobody inspected the roof, managed the renovation or planned for the risk. So we built a firm that does all of it."
+        lede="TCE started with a simple observation: buildings rarely fail because rent was not collected. They fail because nobody inspected the roof, maintained the plant, managed the renovation or planned for the risk. So we built a firm that does all of it."
       />
 
       <section className="container-x grid gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:gap-20">
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-line">
           <Image
-            src="/images/building.webp"
-            alt="Corner view of a brick mixed-use building"
+            src="/images/projects/s18-4.webp"
+            alt="Restored stone balustrade and brick parapet on a New York City rooftop"
             fill
             priority
             sizes="(min-width: 1024px) 50vw, 100vw"
@@ -62,8 +62,9 @@ export default function AboutPage() {
               an asset gains or loses value.
             </p>
             <p>
-              That means scheduled inspections with real reports. It means
-              running construction and capital projects ourselves, from scope
+              That means scheduled inspections with real reports. It means an
+              in-house engineering team that keeps mechanical systems running.
+              It means running construction and capital projects ourselves, from scope
               to closeout. And it means treating risk, from water damage to
               uninsured vendors to city violations, as something to be managed
               before it becomes a cost.
@@ -79,7 +80,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-panel">
+      <section className="border-y border-line bg-surface">
         <div className="container-x grid gap-px py-20 sm:py-28 lg:grid-cols-2 lg:gap-20">
           <div className="pb-10 lg:pb-0">
             <p className="eyebrow">Mission</p>
@@ -111,7 +112,7 @@ export default function AboutPage() {
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
             <li key={v.title} className="card p-7">
-              <span className="text-sm font-semibold tabular-nums text-brand">
+              <span className="text-sm font-semibold tabular-nums text-brand-deep">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-3 text-xl font-semibold tracking-tight">{v.title}</h3>

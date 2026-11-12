@@ -10,7 +10,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-navy/10 bg-white/85 backdrop-blur-md">
       <div className="container-x flex h-20 items-center justify-between gap-6">
         <Link
           href="/"
@@ -33,7 +33,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-white/80 transition-colors hover:text-sky"
+              className="text-sm font-medium text-navy/80 transition-colors hover:text-brand-deep"
             >
               {item.label}
             </Link>
@@ -45,7 +45,7 @@ export function Header() {
 
         <button
           type="button"
-          className="-mr-2 inline-flex size-11 items-center justify-center rounded-lg text-white md:hidden"
+          className="-mr-2 inline-flex size-11 items-center justify-center rounded-lg text-navy md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -65,7 +65,7 @@ export function Header() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="border-t border-white/10 bg-ink md:hidden"
+          className="border-t border-navy/10 bg-white md:hidden"
         >
           <div className="container-x flex flex-col py-4">
             {nav.map((item) => (
@@ -73,7 +73,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-white/5 py-4 text-lg font-medium text-white"
+                className="border-b border-navy/5 py-4 text-lg font-medium text-navy"
               >
                 {item.label}
               </Link>

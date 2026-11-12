@@ -10,7 +10,7 @@ export function CallToAction({
 }) {
   return (
     <section className="container-x py-20 sm:py-28">
-      <div className="relative overflow-hidden rounded-3xl border border-brand/30 bg-gradient-to-br from-brand-deep/40 via-panel to-panel px-6 py-14 sm:px-14 sm:py-20">
+      <div className="relative overflow-hidden rounded-3xl border border-brand/25 bg-gradient-to-br from-brand/15 via-surface to-white px-6 py-14 sm:px-14 sm:py-20">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-brand/20 blur-3xl"
@@ -22,8 +22,8 @@ export function CallToAction({
             <Link href="/contact" className="btn-primary">
               Request a proposal <Icon name="arrow" className="size-4" />
             </Link>
-            <Link href="/services" className="btn-ghost">
-              Explore services
+            <Link href="/projects" className="btn-ghost">
+              See our work
             </Link>
           </div>
         </div>

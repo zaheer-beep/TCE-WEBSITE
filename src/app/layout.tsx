@@ -16,7 +16,7 @@ const urbanist = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | NYC Inspection, Management, Construction & Risk Mitigation`,
+    default: `${site.name} | NYC Management, Inspection, Engineering & Construction`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#070a0e",
+  themeColor: "#ffffff",
 };
 
 const jsonLd = {
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-ink"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-brand-deep focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to content
         </a>

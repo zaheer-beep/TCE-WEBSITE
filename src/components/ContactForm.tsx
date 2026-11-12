@@ -33,7 +33,7 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <div className="card p-8" role="status">
-        <span className="inline-flex size-12 items-center justify-center rounded-full bg-brand/15 text-brand">
+        <span className="inline-flex size-12 items-center justify-center rounded-full bg-brand/15 text-brand-deep">
           <Icon name="check" />
         </span>
         <h2 className="mt-5 text-2xl font-semibold tracking-tight">Message received.</h2>
@@ -107,14 +107,14 @@ export function ContactForm() {
         </button>
         <p className="text-xs text-mist">
           By sending, you agree to our{" "}
-          <a href="/privacy-policy" className="underline hover:text-sky">
+          <a href="/privacy-policy" className="underline hover:text-brand-deep">
             privacy policy
           </a>
           .
         </p>
       </div>
 
-      <p role="alert" className="min-h-5 text-sm text-red-300">
+      <p role="alert" className="min-h-5 text-sm text-red-700">
         {status === "error" && "Something went wrong and your message was not sent. Please try again."}
         {status === "unavailable" &&
           "The online form is not accepting messages right now. Please reach us at our office instead."}

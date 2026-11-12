@@ -2,6 +2,7 @@ export type IconName =
   | "building"
   | "clipboard"
   | "crane"
+  | "gear"
   | "shield"
   | "scale"
   | "wrench";
@@ -83,6 +84,10 @@ export const services: Service[] = [
       "Scheduled, photo-documented inspections that find small problems before they become capital problems.",
     intro:
       "Most managers see a building when something breaks. We inspect on a schedule, document what we find with photos, and turn every finding into an assigned action. It is the difference between a $400 repair and a $40,000 one.",
+    image: {
+      src: "/images/projects/s18-1.webp",
+      alt: "Weathered stone balusters documented during a rooftop inspection",
+    },
     scope: [
       {
         title: "Routine building inspections",
@@ -117,6 +122,53 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "engineering",
+    title: "Building Engineering",
+    label: "Engineering",
+    icon: "gear",
+    pillar: true,
+    summary:
+      "An in-house engineering team that diagnoses, repairs and upgrades the mechanical systems behind the walls.",
+    intro:
+      "Heating, cooling, water pressure and air quality are engineering problems, and most managers outsource every one of them. TCE keeps engineers on the team. We find the root cause, fix it properly and keep the plant running, instead of paying for the same service call again and again.",
+    image: {
+      src: "/images/projects/s29-3.webp",
+      alt: "New duplex domestic water booster pumps with copper piping",
+    },
+    scope: [
+      {
+        title: "HVAC systems",
+        body: "Chillers, condenser and chilled water pumps, air handlers, fan coil units and VAV boxes inspected, rebuilt or replaced as their condition requires.",
+      },
+      {
+        title: "Building automation and controls",
+        body: "Controllers, actuators and valves restored so the building management system can actually regulate temperature and airflow zone by zone.",
+      },
+      {
+        title: "Pumps and plumbing plant",
+        body: "Domestic water boosters, circulating pumps, pressure regulation and corroded piping replaced to restore pressure and reliability.",
+      },
+      {
+        title: "Ventilation and exhaust",
+        body: "Fans, motors and dampers measured against design airflow and corrected at the source instead of patched room by room.",
+      },
+      {
+        title: "Root-cause diagnostics",
+        body: "Recurring complaints are traced to the failing component with measurements, not guesses, before money is spent.",
+      },
+      {
+        title: "Commissioning and warranty",
+        body: "New equipment is aligned, calibrated, started up and documented, with manufacturer and labor warranties kept on file.",
+      },
+    ],
+    deliverables: [
+      "Equipment inventory with condition and remaining life",
+      "Before and after photo records for every repair",
+      "Commissioning readings and warranty documents",
+      "Recommendations for efficiency and reliability upgrades",
+    ],
+  },
+  {
     slug: "construction",
     title: "Construction & Capital Projects",
     label: "Construction",
@@ -127,8 +179,8 @@ export const services: Service[] = [
     intro:
       "When a building needs real work, most managers hand you a contractor's phone number. We manage the project. Scope, bids, schedule, budget and quality stay under the same team that runs your property every day, so construction serves the asset and not the other way around.",
     image: {
-      src: "/images/skyline.webp",
-      alt: "Tower crane above New York City buildings",
+      src: "/images/projects/s17-5.webp",
+      alt: "Rebuilt brick parapet with restored stone coping",
     },
     scope: [
       {
@@ -241,28 +293,20 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "building-systems",
-    title: "Building Systems & Maintenance",
+    slug: "maintenance",
+    title: "Maintenance & Daily Operations",
     label: "Maintenance",
     icon: "wrench",
     pillar: false,
     summary:
-      "Electrical, plumbing and daily upkeep handled by people who know how your building actually works.",
+      "Cleaning, repairs and preventive upkeep that keep a building presentable and working every day.",
     intro:
-      "The systems behind the walls decide whether a building runs smoothly. We maintain electrical and water systems, keep the property clean and presentable every day, and handle repairs quickly when something fails.",
+      "Tenants judge a building by what they see and touch every day. We keep common areas clean, respond to repairs quickly and run the preventive routines that stop small issues from reaching the engineering team at all.",
     image: {
-      src: "/images/mechanical.webp",
-      alt: "Pump and piping equipment in a building mechanical room",
+      src: "/images/projects/s10-4.webp",
+      alt: "Newly installed porcelain tile in a building corridor",
     },
     scope: [
-      {
-        title: "Electrical and power systems",
-        body: "Routine inspection, preventive maintenance and upgrades of electrical infrastructure, with attention to load, safety and energy use.",
-      },
-      {
-        title: "Water and plumbing systems",
-        body: "Supply, pressure, drainage and pump maintenance, prompt leak repair and water-saving improvements.",
-      },
       {
         title: "Daily cleaning and upkeep",
         body: "Lobbies, corridors, restrooms, windows and exteriors kept to a consistent standard, every day.",
@@ -271,11 +315,19 @@ export const services: Service[] = [
         title: "Repairs and work orders",
         body: "Fast, tracked response to repair requests, with emergency service available around the clock.",
       },
+      {
+        title: "Electrical and plumbing upkeep",
+        body: "Routine checks, lamp and fixture replacement, leak repair and drain maintenance handled before they disrupt occupants.",
+      },
+      {
+        title: "Preventive routines",
+        body: "Filters, belts, lubrication and seasonal changeovers done on a calendar and recorded.",
+      },
     ],
     deliverables: [
-      "Preventive maintenance schedule by system",
+      "Preventive maintenance schedule",
       "Work order history and response times",
-      "Recommendations for efficiency upgrades",
+      "Cleaning standards and inspection checklists",
     ],
   },
 ];

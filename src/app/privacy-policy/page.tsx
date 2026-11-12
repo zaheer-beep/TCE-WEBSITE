@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
             <div className="mt-4 space-y-4 leading-relaxed text-mist">
               {(section.blocks as Block[]).map((block, i) =>
                 block.ul ? (
-                  <ul key={i} className="list-disc space-y-2 pl-6 marker:text-brand">
+                  <ul key={i} className="list-disc space-y-2 pl-6 marker:text-brand-deep">
                     {block.ul.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
           </section>
         ))}
         <p className="text-mist">
-          <Link href="/contact" className="font-semibold text-sky hover:underline">
+          <Link href="/contact" className="font-semibold text-brand-deep hover:underline">
             Contact TCE Property Management
           </Link>
         </p>

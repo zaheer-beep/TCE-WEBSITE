@@ -6,9 +6,9 @@ export const site = {
   name: "TCE Property Management",
   shortName: "TCE",
   url: "https://tceproperties.com",
-  tagline: "Inspection. Management. Construction. Risk mitigation.",
+  tagline: "Management. Inspection. Engineering. Construction. Risk mitigation.",
   description:
-    "TCE is a New York City property management firm that goes beyond management: scheduled inspections, in-house construction oversight, and risk mitigation for owners who expect more from their buildings.",
+    "TCE is a New York City property management firm that goes beyond management: scheduled inspections, in-house engineering, construction oversight and risk mitigation for owners who expect more from their buildings.",
   yearsInBusiness: 15,
   market: "New York City",
   phone: "" as string, // e.g. "(212) 555-0100"
@@ -28,7 +28,7 @@ export const site = {
 
 export const nav = [
   { href: "/services", label: "Services" },
-  { href: "/#the-tce-standard", label: "The TCE Standard" },
+  { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;

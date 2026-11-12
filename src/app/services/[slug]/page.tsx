@@ -62,8 +62,8 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         <h2 className="h-section mt-4 max-w-2xl">How we deliver {service.title.toLowerCase()}.</h2>
         <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {service.scope.map((item, i) => (
-            <li key={item.title} className="bg-panel p-7">
-              <span className="text-sm font-semibold tabular-nums text-brand">
+            <li key={item.title} className="bg-surface p-7">
+              <span className="text-sm font-semibold tabular-nums text-brand-deep">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-3 text-lg font-semibold tracking-tight">{item.title}</h3>
@@ -73,7 +73,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         </ul>
       </section>
 
-      <section className="border-y border-line bg-panel">
+      <section className="border-y border-line bg-surface">
         <div className="container-x grid gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:gap-20">
           <div>
             <p className="eyebrow">What you receive</p>
@@ -85,11 +85,11 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
           </div>
           <ul className="space-y-4">
             {service.deliverables.map((d) => (
-              <li key={d} className="flex gap-4 rounded-xl border border-line bg-ink p-5">
-                <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+              <li key={d} className="flex gap-4 rounded-xl border border-line bg-white p-5">
+                <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand-deep">
                   <Icon name="check" className="size-4" />
                 </span>
-                <span className="leading-relaxed text-white/90">{d}</span>
+                <span className="leading-relaxed text-navy/90">{d}</span>
               </li>
             ))}
           </ul>
@@ -103,9 +103,9 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             <li key={s.slug}>
               <Link
                 href={`/services/${s.slug}`}
-                className="card flex h-full flex-col gap-4 p-5 transition-colors hover:border-brand/60 hover:bg-panel-2"
+                className="card flex h-full flex-col gap-4 p-5 transition-colors hover:border-brand/60 hover:bg-surface"
               >
-                <Icon name={s.icon} className="size-6 text-brand" />
+                <Icon name={s.icon} className="size-6 text-brand-deep" />
                 <span className="font-semibold leading-snug">{s.title}</span>
               </Link>
             </li>

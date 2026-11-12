@@ -3,14 +3,12 @@
 @theme inline {
   --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #070a0e;
-  --color-panel: #0e1319;
-  --color-panel-2: #141b23;
-  --color-line: #1f2832;
+  --color-navy: #0c1d2e;
+  --color-surface: #f5f8fb;
+  --color-line: #e1e8ef;
   --color-brand: #4aa6d9;
-  --color-brand-deep: #1b75bc;
-  --color-sky: #a6dff9;
-  --color-mist: #9aa7b4;
+  --color-brand-deep: #1b6fb3;
+  --color-mist: #52647a;
 }
 
 html {
@@ -19,13 +17,13 @@ html {
 }
 
 body {
-  background: var(--color-ink);
-  color: #fff;
+  background: #fff;
+  color: var(--color-navy);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: var(--color-brand);
+  background: var(--color-brand-deep);
   color: #fff;
 }
 
@@ -34,7 +32,7 @@ body {
 }
 
 @utility eyebrow {
-  @apply text-xs font-semibold uppercase tracking-[0.22em] text-brand;
+  @apply text-xs font-bold uppercase tracking-[0.22em] text-brand-deep;
 }
 
 @utility h-display {
@@ -50,17 +48,17 @@ body {
 }
 
 @utility btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky bg-brand text-ink hover:bg-sky;
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-deep px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep;
 }
 
 @utility btn-ghost {
-  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky border border-white/25 text-white hover:border-sky hover:text-sky;
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-navy/20 bg-white px-6 py-3 text-sm font-semibold text-navy transition-colors hover:border-brand-deep hover:text-brand-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep;
 }
 
 @utility card {
-  @apply rounded-2xl border border-line bg-panel;
+  @apply rounded-2xl border border-line bg-white shadow-[0_1px_2px_rgb(12_29_46/0.04),0_8px_24px_-12px_rgb(12_29_46/0.10)];
 }
 
 @utility field {
-  @apply w-full rounded-lg border border-line bg-ink px-4 py-3 text-base text-white placeholder:text-mist/60 focus:border-brand focus:outline-none;
+  @apply w-full rounded-lg border border-line bg-white px-4 py-3 text-base text-navy placeholder:text-mist/60 focus:border-brand-deep focus:outline-none focus:ring-2 focus:ring-brand/30;
 }
