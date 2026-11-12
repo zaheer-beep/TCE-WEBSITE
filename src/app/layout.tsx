@@ -13,6 +13,13 @@ const urbanist = localFont({
   display: "swap",
 });
 
+const display = localFont({
+  src: "./fonts/dm-serif-display.woff2",
+  variable: "--font-dmserif",
+  weight: "400",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -77,11 +84,11 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${urbanist.variable} antialiased`}>
+    <html lang="en" className={`${urbanist.variable} ${display.variable} antialiased`}>
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-brand-deep focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-none focus:bg-brand-deep focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to content
         </a>

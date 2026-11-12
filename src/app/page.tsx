@@ -1,18 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CallToAction } from "@/components/CallToAction";
+import { HeroVideo } from "@/components/HeroVideo";
 import { Icon } from "@/components/Icon";
-import { ServiceCard } from "@/components/ServiceCard";
-import { StageBadge } from "@/components/StageBadge";
-import { featured, photoSrc, program } from "@/lib/projects";
+import { allProjects, photoSrc, program } from "@/lib/projects";
 import { pillars, services } from "@/lib/services";
 import { site } from "@/lib/site";
+
+const disciplineImages: Record<string, { src: string; alt: string }> = {
+  "property-management": { src: "/images/building.webp", alt: "Street-level view of a managed building" },
+  inspections: { src: "/images/projects/s18-1.webp", alt: "Stone balusters documented during an inspection" },
+  engineering: { src: "/images/projects/s29-3.webp", alt: "New domestic water booster pumps" },
+  construction: { src: "/images/projects/s17-5.webp", alt: "Rebuilt brick parapet" },
+  "risk-mitigation": { src: "/images/projects/s12-4.webp", alt: "Replaced ceiling that removed an overhead hazard" },
+};
+
+const featuredSlugs = [
+  "brick-replacement",
+  "domestic-water-pumps",
+  "lobby-corridor",
+  "stone-restoration",
+  "bathrooms",
+  "condenser-water-pumps",
+];
 
 const stats = [
   { value: `${site.yearsInBusiness}+`, label: "Years in business" },
   { value: "5", label: "Boroughs served" },
   { value: "24/7", label: "Emergency response" },
-  { value: "5", label: "Disciplines, one team" },
+  { value: program.stats[1].value, label: "Work orders, one program" },
 ];
 
 const comparison = [
@@ -46,312 +62,257 @@ const comparison = [
     typical: "A rent roll and a list of bills.",
     tce: "Monthly reporting on finances, open items, building condition and capital needs.",
   },
-  {
-    topic: "Accountability",
-    typical: "Five vendors, five stories, nobody responsible.",
-    tce: "One team answerable for the whole building.",
-  },
-];
-
-const process = [
-  {
-    title: "Walk the property",
-    body: "We start on site. Roof to basement, we document condition, systems, open violations and immediate risks.",
-  },
-  {
-    title: "Build the plan",
-    body: "You receive a written plan: operating budget, inspection schedule, compliance calendar and capital priorities.",
-  },
-  {
-    title: "Take over operations",
-    body: "Staff, vendors, tenants and books move to our team with a structured handover so nothing is dropped.",
-  },
-  {
-    title: "Report and improve",
-    body: "Monthly reporting shows what was done, what was found and what is next. The plan is updated as the building changes.",
-  },
-];
-
-const propertyTypes = [
-  { title: "Multifamily residential", body: "Rental buildings from walk-ups to elevator towers." },
-  { title: "Office and commercial", body: "Workplaces where uptime and presentation matter." },
-  { title: "Retail and mixed-use", body: "Street-level retail with residential or office above." },
-  { title: "Industrial and specialty", body: "Warehouses and properties with heavy building systems." },
 ];
 
 export default function Home() {
   const secondary = services.filter((s) => !s.pillar);
+  const featured = featuredSlugs
+    .map((slug) => allProjects.find((p) => p.slug === slug))
+    .filter((p) => p !== undefined);
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-surface">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-40 -top-40 size-[36rem] rounded-full bg-brand/20 blur-3xl"
-        />
-        <div className="container-x relative grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-28">
-          <div>
-            <p className="eyebrow">
-              New York City · Over {site.yearsInBusiness} years
-            </p>
-            <h1 className="mt-6 text-5xl font-semibold leading-[1.02] tracking-tight text-balance sm:text-6xl lg:text-7xl">
-              Most companies manage buildings.{" "}
-              <span className="text-brand-deep">We protect them.</span>
-            </h1>
-            <p className="lede mt-7 max-w-xl">
-              TCE brings management, inspection, engineering, construction and
-              risk mitigation under one roof, so your property is not just run
-              day to day. It is examined, improved and defended.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-primary">
-                Request a proposal <Icon name="arrow" className="size-4" />
-              </Link>
-              <Link href="/projects" className="btn-ghost">
-                See our work
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_30px_60px_-30px_rgb(12_29_46/0.45)]">
-              <Image
-                src="/images/skyline.webp"
-                alt="New York City buildings with a tower crane on the skyline"
-                fill
-                priority
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="card absolute -bottom-6 -left-4 max-w-[15rem] p-5 sm:-left-8">
-              <p className="text-3xl font-semibold tracking-tight text-brand-deep">150+</p>
-              <p className="mt-1 text-sm leading-snug text-mist">
-                work orders completed in one 24-month building upgrade program
-              </p>
-            </div>
+      {/* Hero: slides up underneath the transparent header */}
+      <section className="relative isolate -mt-20 flex min-h-[100svh] items-center justify-center overflow-hidden bg-navy">
+        <HeroVideo />
+        <div aria-hidden="true" className="absolute inset-0 bg-black/45" />
+        <div className="container-x relative py-32 text-center text-white">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] sm:text-sm">
+            New York City · Over {site.yearsInBusiness} years
+          </p>
+          <h1 className="mx-auto mt-6 max-w-6xl font-display text-[12.5vw] uppercase leading-[0.92] sm:text-8xl lg:text-[9.5rem]">
+            More than management
+          </h1>
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
+            Management, inspection, engineering, construction and risk
+            mitigation for New York City buildings, from one accountable team.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link href="/contact" className="btn-light">
+              Request a proposal
+            </Link>
+            <Link href="/projects" className="btn-light">
+              See our work
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section aria-label="Company at a glance" className="border-y border-line bg-white">
-        <dl className="container-x grid grid-cols-2 lg:grid-cols-4">
-          {stats.map((s, i) => (
-            <div
-              key={s.label}
-              className={`flex flex-col-reverse gap-1 py-8 sm:py-10 ${
-                i % 2 === 1 ? "border-l border-line pl-6" : ""
-              } ${i >= 2 ? "border-t border-line lg:border-t-0" : ""} ${
-                i === 2 ? "lg:border-l lg:pl-6" : ""
-              }`}
-            >
-              <dt className="text-sm text-mist">{s.label}</dt>
-              <dd className="text-4xl font-semibold tracking-tight text-brand-deep sm:text-5xl">
-                {s.value}
-              </dd>
+      {/* Intro: image left, statement right */}
+      <section className="container-x grid items-center gap-10 py-20 sm:py-28 lg:grid-cols-2 lg:gap-16">
+        <div className="relative aspect-[4/3] overflow-hidden">
+          <Image
+            src="/images/projects/s18-4.webp"
+            alt="Restored stone balustrade and brick parapet on a New York City rooftop"
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+        <div>
+          <h2 className="h-section">
+            Most companies manage buildings. We protect them.
+          </h2>
+          <div className="mt-7 space-y-5 text-lg leading-relaxed text-navy/80">
+            <p>
+              Buildings rarely fail because rent was not collected. They fail
+              because nobody inspected the roof, maintained the plant, managed
+              the renovation or planned for the risk.
+            </p>
+            <p>
+              For more than {site.yearsInBusiness} years, TCE has done all of
+              it for New York City owners, so a property is not just run day to
+              day. It is examined, improved and defended.
+            </p>
+          </div>
+          <Link href="/about" className="link-caps mt-8">
+            Our company <Icon name="arrow" className="size-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Disciplines: colour block */}
+      <section className="bg-brand-deep text-white">
+        <div className="container-x py-20 sm:py-28">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="font-display text-4xl uppercase leading-none text-balance sm:text-5xl lg:text-7xl">
+              Five disciplines. One team.
+            </h2>
+            <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl">
+              A manager, an inspector, an engineer, a construction manager and
+              a risk consultant rarely talk to each other. At TCE they are the
+              same team, working from the same information about your building.
+            </p>
+            <Link href="/services" className="mt-7 inline-block text-[13px] font-bold uppercase tracking-[0.12em] underline-offset-4 hover:underline">
+              All services
+            </Link>
+          </div>
+
+          <ul className="mt-14 grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 lg:grid-cols-5">
+            {pillars.map((s) => {
+              const img = disciplineImages[s.slug];
+              return (
+                <li key={s.slug}>
+                  <Link href={`/services/${s.slug}`} className="group block text-center">
+                    <div className="relative aspect-[3/4] overflow-hidden bg-navy/30">
+                      {img && (
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          sizes="(min-width: 1024px) 20vw, (min-width: 768px) 33vw, 50vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
+                    </div>
+                    <h3 className="mt-5 font-display text-2xl uppercase leading-none underline-offset-4 group-hover:underline sm:text-3xl">
+                      {s.label}
+                    </h3>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <ul className="mt-14 grid gap-px border border-white/30 bg-white/30 sm:grid-cols-2">
+            {secondary.map((s) => (
+              <li key={s.slug} className="bg-brand-deep">
+                <Link
+                  href={`/services/${s.slug}`}
+                  className="group flex h-full items-center justify-between gap-6 p-6 transition-colors hover:bg-white hover:text-brand-deep"
+                >
+                  <span>
+                    <span className="block text-[13px] font-bold uppercase tracking-[0.12em]">{s.title}</span>
+                    <span className="mt-2 block text-[15px] leading-relaxed opacity-85">{s.summary}</span>
+                  </span>
+                  <Icon name="arrow" className="size-5 shrink-0 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Featured projects: horizontal scroller on a pale tint */}
+      <section className="overflow-hidden bg-surface">
+        <div className="container-x pt-20 sm:pt-28">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="h-section max-w-xl">Featured projects</h2>
+            <Link href="/projects" className="link-caps">
+              View all projects <Icon name="arrow" className="size-4" />
+            </Link>
+          </div>
+        </div>
+        <ul
+          className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-20 sm:px-10 sm:pb-28 lg:px-[max(2.5rem,calc((100vw-84rem)/2+2.5rem))]"
+          aria-label="Featured projects"
+        >
+          {featured.map((project) => {
+            const after = [...project.photos].reverse().find((p) => p.stage === "After") ?? project.photos[0];
+            return (
+              <li key={project.slug} className="w-[86vw] shrink-0 snap-start sm:w-[42rem]">
+                <Link href={`/projects#${project.slug}`} className="group grid h-full bg-white sm:grid-cols-[1.15fr_1fr]">
+                  <div className="relative aspect-[4/3] overflow-hidden sm:aspect-auto sm:min-h-[22rem]">
+                    <Image
+                      src={photoSrc(after.id)}
+                      alt={`${project.title}: ${after.caption}`}
+                      fill
+                      sizes="(min-width: 640px) 24rem, 86vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-col p-6 sm:p-8">
+                    <p className="text-xs font-bold text-navy">Completed project</p>
+                    <h3 className="h-card mt-2 text-brand-deep">{project.title}</h3>
+                    <p className="mt-4 flex-1 text-[15px] leading-relaxed text-navy/80">{project.summary}</p>
+                    <span className="link-caps mt-6">View project</span>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      {/* Numbers */}
+      <section aria-label="Company at a glance" className="border-b border-line">
+        <dl className="container-x grid grid-cols-2 gap-x-6 gap-y-10 py-16 lg:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col-reverse justify-end gap-2 text-center">
+              <dt className="text-xs font-bold uppercase tracking-[0.16em] text-navy/75">{s.label}</dt>
+              <dd className="font-display text-6xl leading-none text-brand-deep sm:text-7xl">{s.value}</dd>
             </div>
           ))}
         </dl>
       </section>
 
-      {/* Four pillars */}
-      <section className="container-x py-20 sm:py-28">
-        <div className="max-w-3xl">
-          <p className="eyebrow">What we do</p>
-          <h2 className="h-section mt-4">
-            Five disciplines that usually take five companies.
-          </h2>
-          <p className="lede mt-5">
-            A manager, an inspector, an engineer, a construction manager and a
-            risk consultant rarely talk to each other. At TCE they are the same team,
-            working from the same information about your building.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {pillars.map((s, i) => (
-            <ServiceCard key={s.slug} service={s} index={i} />
-          ))}
-        </div>
-
-        <div className="mt-5 grid gap-5 sm:grid-cols-2">
-          {secondary.map((s) => (
-            <Link
-              key={s.slug}
-              href={`/services/${s.slug}`}
-              className="card group flex items-center gap-5 p-6 transition-colors hover:border-brand/60 hover:bg-surface"
-            >
-              <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand-deep">
-                <Icon name={s.icon} />
-              </span>
-              <span className="flex-1">
-                <span className="block font-semibold">{s.title}</span>
-                <span className="mt-1 block text-sm leading-relaxed text-mist">{s.summary}</span>
-              </span>
-              <Icon name="arrow" className="size-5 shrink-0 text-brand-deep transition-transform group-hover:translate-x-1" />
-            </Link>
-          ))}
-        </div>
-      </section>
-
       {/* The TCE Standard */}
-      <section id="the-tce-standard" className="border-y border-line bg-surface">
-        <div className="container-x py-20 sm:py-28">
-          <div className="max-w-3xl">
+      <section id="the-tce-standard" className="container-x py-20 sm:py-28">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+          <div>
             <p className="eyebrow">The TCE Standard</p>
-            <h2 className="h-section mt-4">
-              What you get here that you do not get elsewhere.
-            </h2>
-            <p className="lede mt-5">
+            <h2 className="h-section mt-4">What you do not get elsewhere</h2>
+            <p className="mt-6 text-lg leading-relaxed text-navy/80">
               Collecting rent and answering calls is the minimum. This is how
               the work compares when a building is actually being looked after.
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-line">
-            <div className="hidden grid-cols-[0.7fr_1fr_1.2fr] bg-white text-xs font-semibold uppercase tracking-[0.18em] md:grid">
-              <div className="px-6 py-4 text-mist">&nbsp;</div>
-              <div className="border-l border-line px-6 py-4 text-mist">Typical manager</div>
-              <div className="border-l border-line bg-brand/10 px-6 py-4 text-brand-deep">TCE</div>
-            </div>
+          <dl className="border-t border-brand-deep">
             {comparison.map((row) => (
-              <div
-                key={row.topic}
-                className="grid border-t border-line first:border-t-0 md:grid-cols-[0.7fr_1fr_1.2fr] md:first:border-t"
-              >
-                <h3 className="px-6 pt-6 text-lg font-semibold md:py-6">{row.topic}</h3>
-                <p className="flex gap-3 px-6 pt-3 text-[15px] leading-relaxed text-mist md:border-l md:border-line md:py-6">
-                  <Icon name="x" className="mt-1 size-4 shrink-0 text-navy/30" />
-                  <span>
-                    <span className="sr-only">Typical manager: </span>
-                    {row.typical}
-                  </span>
-                </p>
-                <p className="flex gap-3 px-6 pb-6 pt-3 text-[15px] leading-relaxed text-navy md:border-l md:border-line md:bg-brand/[0.06] md:py-6">
-                  <Icon name="check" className="mt-1 size-4 shrink-0 text-brand-deep" />
-                  <span>
-                    <span className="sr-only">TCE: </span>
-                    {row.tce}
-                  </span>
-                </p>
+              <div key={row.topic} className="grid gap-x-8 gap-y-3 border-b border-line py-6 sm:grid-cols-[10rem_1fr]">
+                <dt className="font-display text-2xl uppercase leading-none text-brand-deep">{row.topic}</dt>
+                <dd className="space-y-2 text-[15px] leading-relaxed">
+                  <p className="flex gap-3 text-navy/60">
+                    <Icon name="x" className="mt-1 size-4 shrink-0" />
+                    <span>
+                      <span className="font-semibold">Typical manager:</span> {row.typical}
+                    </span>
+                  </p>
+                  <p className="flex gap-3 text-navy">
+                    <Icon name="check" className="mt-1 size-4 shrink-0 text-brand-deep" />
+                    <span>
+                      <span className="font-semibold">TCE:</span> {row.tce}
+                    </span>
+                  </p>
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
-      {/* Recent work */}
-      <section className="container-x py-20 sm:py-28">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-3xl">
-            <p className="eyebrow">Recent work</p>
-            <h2 className="h-section mt-4">Proof, before and after.</h2>
-            <p className="lede mt-5">
-              From a single 24-month upgrade program at a New York City
-              government facility: {program.stats[1].value} work orders across{" "}
-              {program.stats[2].value} major work areas, managed entirely by TCE.
-            </p>
-          </div>
-          <Link href="/projects" className="btn-ghost">
-            View all projects <Icon name="arrow" className="size-4" />
-          </Link>
-        </div>
-
-        <ul className="mt-12 grid gap-6 lg:grid-cols-3">
-          {featured.map((f) => (
-            <li key={f.title} className="card overflow-hidden">
-              <div className="grid grid-cols-2 gap-px bg-line">
-                {(["before", "after"] as const).map((k) => (
-                  <div key={k} className="relative aspect-[3/4] bg-surface">
-                    <Image
-                      src={photoSrc(f[k])}
-                      alt={`${f.title}, ${k}`}
-                      fill
-                      sizes="(min-width: 1024px) 17vw, 50vw"
-                      className="object-cover"
-                    />
-                    <StageBadge stage={k === "before" ? "Before" : "After"} />
-                  </div>
-                ))}
-              </div>
-              <div className="p-6">
-                <p className="eyebrow">{f.category}</p>
-                <h3 className="mt-2 text-lg font-semibold tracking-tight">{f.title}</h3>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Process */}
-      <section className="border-t border-line bg-surface">
-      <div className="container-x py-20 sm:py-28">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+      {/* History: text left, image right */}
+      <section className="border-t border-line">
+        <div className="container-x grid items-center gap-10 py-20 sm:py-28 lg:grid-cols-2 lg:gap-16">
           <div>
-            <p className="eyebrow">How we work</p>
-            <h2 className="h-section mt-4">From first walkthrough to a building that runs itself.</h2>
-            <p className="lede mt-5">
-              Taking on a property is a process, not a handshake. Here is what
-              the first months with TCE look like.
-            </p>
-            <div className="relative mt-10 hidden aspect-[4/3] overflow-hidden rounded-2xl border border-line lg:block">
-              <Image
-                src="/images/projects/s30-4.webp"
-                alt="Rebuilt condenser water pump and motor in a mechanical room"
-                fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
-          <ol className="space-y-5">
-            {process.map((step, i) => (
-              <li key={step.title} className="card flex gap-6 p-7">
-                <span className="text-3xl font-semibold tabular-nums text-brand-deep">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="text-xl font-semibold tracking-tight">{step.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-mist">{step.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-      </section>
-
-      {/* Property types + NYC */}
-      <section className="border-t border-line bg-white">
-        <div className="container-x grid gap-14 py-20 sm:py-28 lg:grid-cols-2 lg:gap-20">
-          <div>
-            <p className="eyebrow">Who we work with</p>
-            <h2 className="h-section mt-4">Built for New York City buildings.</h2>
-            <p className="lede mt-5">
+            <p className="eyebrow">Built for New York</p>
+            <h2 className="h-section mt-4">
+              Looking after New York buildings for over {site.yearsInBusiness} years.
+            </h2>
+            <p className="mt-7 text-lg leading-relaxed text-navy/80">
               Old risers, strict local laws, demanding tenants and no room for
-              error. We have spent more than {site.yearsInBusiness} years
-              learning how buildings here really behave.
+              error. We work with owners of multifamily, office, retail,
+              mixed-use and institutional properties across all five boroughs.
             </p>
-            <ul className="mt-8 flex flex-wrap gap-2">
+            <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[13px] font-bold uppercase tracking-[0.12em] text-brand-deep">
               {site.boroughs.map((b) => (
-                <li
-                  key={b}
-                  className="rounded-full border border-line bg-white px-4 py-2 text-sm text-navy/85"
-                >
-                  {b}
-                </li>
+                <li key={b}>{b}</li>
               ))}
             </ul>
+            <Link href="/about" className="btn-ghost mt-9">
+              About TCE
+            </Link>
           </div>
-          <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
-            {propertyTypes.map((t) => (
-              <li key={t.title} className="bg-white p-7">
-                <h3 className="font-semibold">{t.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-mist">{t.body}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="relative aspect-[4/3] overflow-hidden">
+            <Image
+              src="/images/projects/s05-1.webp"
+              alt="Renovated corridor with stone flooring and custom wood millwork"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 

@@ -2,13 +2,14 @@
 
 @theme inline {
   --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-dmserif), "Times New Roman", serif;
 
-  --color-navy: #0c1d2e;
-  --color-surface: #f5f8fb;
-  --color-line: #e1e8ef;
+  --color-navy: #10212f;
+  --color-surface: #eef5fa;
+  --color-line: #dbe5ec;
   --color-brand: #4aa6d9;
-  --color-brand-deep: #1b6fb3;
-  --color-mist: #52647a;
+  --color-brand-deep: #17639f;
+  --color-mist: #4d5f70;
 }
 
 html {
@@ -28,37 +29,56 @@ body {
 }
 
 @utility container-x {
-  @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  @apply mx-auto w-full max-w-[84rem] px-5 sm:px-10;
 }
 
 @utility eyebrow {
-  @apply text-xs font-bold uppercase tracking-[0.22em] text-brand-deep;
+  @apply text-xs font-bold uppercase tracking-[0.2em] text-navy;
 }
 
 @utility h-display {
-  @apply text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl;
+  @apply font-display text-5xl font-normal uppercase leading-[0.98] text-brand-deep text-balance sm:text-6xl lg:text-7xl;
 }
 
 @utility h-section {
-  @apply text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl;
+  @apply font-display text-4xl font-normal uppercase leading-none text-brand-deep text-balance sm:text-5xl lg:text-6xl;
+}
+
+@utility h-card {
+  @apply font-display text-2xl font-normal uppercase leading-[1.05] sm:text-3xl;
 }
 
 @utility lede {
-  @apply text-lg leading-relaxed text-mist text-pretty;
+  @apply text-lg leading-relaxed text-navy/80 text-pretty sm:text-xl;
 }
 
 @utility btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-deep px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep;
+  @apply inline-flex items-center justify-center gap-2 border border-brand-deep bg-brand-deep px-6 py-3 text-[13px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-navy hover:border-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep;
 }
 
 @utility btn-ghost {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border border-navy/20 bg-white px-6 py-3 text-sm font-semibold text-navy transition-colors hover:border-brand-deep hover:text-brand-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep;
+  @apply inline-flex items-center justify-center gap-2 border border-brand-deep bg-transparent px-6 py-3 text-[13px] font-bold uppercase tracking-[0.12em] text-brand-deep transition-colors hover:bg-brand-deep hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep;
+}
+
+@utility btn-light {
+  @apply inline-flex items-center justify-center gap-2 border border-white bg-transparent px-6 py-3 text-[13px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-brand-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+}
+
+@utility link-caps {
+  @apply inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.12em] text-brand-deep hover:underline underline-offset-4;
 }
 
 @utility card {
-  @apply rounded-2xl border border-line bg-white shadow-[0_1px_2px_rgb(12_29_46/0.04),0_8px_24px_-12px_rgb(12_29_46/0.10)];
+  @apply border border-line bg-white;
 }
 
 @utility field {
-  @apply w-full rounded-lg border border-line bg-white px-4 py-3 text-base text-navy placeholder:text-mist/60 focus:border-brand-deep focus:outline-none focus:ring-2 focus:ring-brand/30;
+  @apply w-full border border-line bg-white px-4 py-3 text-base text-navy placeholder:text-mist/60 focus:border-brand-deep focus:outline-none focus:ring-2 focus:ring-brand/30;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

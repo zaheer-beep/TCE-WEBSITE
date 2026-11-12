@@ -44,7 +44,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
 
       {service.image && (
         <div className="container-x pt-16 sm:pt-20">
-          <div className="relative aspect-[21/9] overflow-hidden rounded-3xl border border-line">
+          <div className="relative aspect-[21/9] overflow-hidden rounded-none border border-line">
             <Image
               src={service.image.src}
               alt={service.image.alt}
@@ -60,7 +60,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       <section className="container-x py-16 sm:py-24">
         <p className="eyebrow">What is included</p>
         <h2 className="h-section mt-4 max-w-2xl">How we deliver {service.title.toLowerCase()}.</h2>
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-none border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {service.scope.map((item, i) => (
             <li key={item.title} className="bg-surface p-7">
               <span className="text-sm font-semibold tabular-nums text-brand-deep">
@@ -85,7 +85,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
           </div>
           <ul className="space-y-4">
             {service.deliverables.map((d) => (
-              <li key={d} className="flex gap-4 rounded-xl border border-line bg-white p-5">
+              <li key={d} className="flex gap-4 rounded-none border border-line bg-white p-5">
                 <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand-deep">
                   <Icon name="check" className="size-4" />
                 </span>

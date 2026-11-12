@@ -41,7 +41,7 @@ export default function AboutPage() {
       />
 
       <section className="container-x grid gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:gap-20">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-line">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-none border border-line">
           <Image
             src="/images/projects/s18-4.webp"
             alt="Restored stone balustrade and brick parapet on a New York City rooftop"

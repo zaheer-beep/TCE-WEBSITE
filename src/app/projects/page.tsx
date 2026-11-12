@@ -101,7 +101,7 @@ export default function ProjectsPage() {
                           aria-label={`${p.stage}: ${p.caption} (opens full photo)`}
                         >
                           <figure>
-                            <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-line bg-surface">
+                            <div className="relative aspect-[3/4] overflow-hidden rounded-none border border-line bg-surface">
                               <Image
                                 src={photoSrc(p.id)}
                                 alt={`${project.title}, ${p.stage.toLowerCase()}: ${p.caption}`}

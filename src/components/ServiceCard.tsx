@@ -9,7 +9,7 @@ export function ServiceCard({ service, index }: { service: Service; index?: numb
       className="card group relative flex h-full flex-col p-7 transition-colors hover:border-brand/60 hover:bg-surface"
     >
       <div className="flex items-start justify-between">
-        <span className="inline-flex size-12 items-center justify-center rounded-xl bg-brand/10 text-brand-deep">
+        <span className="inline-flex size-12 items-center justify-center rounded-none bg-brand/10 text-brand-deep">
           <Icon name={service.icon} />
         </span>
         {index !== undefined && (

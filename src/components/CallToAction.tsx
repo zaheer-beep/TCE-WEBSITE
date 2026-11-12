@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "./Icon";
 
 export function CallToAction({
   title = "See what your building is missing.",
@@ -9,23 +9,28 @@ export function CallToAction({
   body?: string;
 }) {
   return (
-    <section className="container-x py-20 sm:py-28">
-      <div className="relative overflow-hidden rounded-3xl border border-brand/25 bg-gradient-to-br from-brand/15 via-surface to-white px-6 py-14 sm:px-14 sm:py-20">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-brand/20 blur-3xl"
-        />
-        <div className="relative max-w-2xl">
-          <h2 className="h-section">{title}</h2>
-          <p className="lede mt-5">{body}</p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <Link href="/contact" className="btn-primary">
-              Request a proposal <Icon name="arrow" className="size-4" />
-            </Link>
-            <Link href="/projects" className="btn-ghost">
-              See our work
-            </Link>
-          </div>
+    <section className="relative isolate overflow-hidden">
+      <Image
+        src="/images/skyline.webp"
+        alt=""
+        fill
+        sizes="100vw"
+        className="-z-20 object-cover"
+      />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-navy/60" />
+      <div className="container-x py-24 text-center text-white sm:py-36">
+        <p className="text-xs font-bold uppercase tracking-[0.2em]">Start a conversation</p>
+        <h2 className="mx-auto mt-5 max-w-4xl font-display text-4xl uppercase leading-none text-balance sm:text-6xl lg:text-7xl">
+          {title}
+        </h2>
+        <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">{body}</p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <Link href="/contact" className="btn-light">
+            Request a proposal
+          </Link>
+          <Link href="/projects" className="btn-light">
+            See our work
+          </Link>
         </div>
       </div>
     </section>
