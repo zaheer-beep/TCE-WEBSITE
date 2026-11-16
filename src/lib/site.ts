@@ -12,7 +12,7 @@ export const site = {
   yearsInBusiness: 15,
   market: "New York City",
   phone: "212-213-4957" as string,
-  email: "" as string, // e.g. "info@tceproperties.com"
+  email: "info@towerce.com" as string,
   address: {
     street: "120 W 31st St, 7th Floor",
     city: "New York",
