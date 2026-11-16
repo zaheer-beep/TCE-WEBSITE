@@ -11,13 +11,13 @@ export const site = {
     "TCE is a New York City property management firm that goes beyond management: scheduled inspections, in-house engineering, construction oversight and risk mitigation for owners who expect more from their buildings.",
   yearsInBusiness: 15,
   market: "New York City",
-  phone: "" as string, // e.g. "(212) 555-0100"
+  phone: "212-213-4957" as string,
   email: "" as string, // e.g. "info@tceproperties.com"
   address: {
-    street: "4 New Hyde Park Rd, Suite 4",
-    city: "Franklin Square",
+    street: "120 W 31st St, 7th Floor",
+    city: "New York",
     state: "NY",
-    zip: "11010",
+    zip: "10001",
   },
   hours: [
     { days: "Monday to Saturday", time: "8 am to 8 pm" },
